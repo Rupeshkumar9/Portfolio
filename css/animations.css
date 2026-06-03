@@ -1,0 +1,132 @@
+/* ═══════════════════════════════════════════════
+   ANIMATIONS — Starfield Portfolio
+   ═══════════════════════════════════════════════ */
+
+/* ── Cursor Blink ── */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* ── Status Dot Ping ── */
+@keyframes ping {
+    75%, 100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+/* ── HUD Card Pulse Glow ── */
+@keyframes pulse-glow {
+    0%, 100% {
+        border-color: rgba(59, 130, 246, 0.3);
+        box-shadow: 0 0 0 rgba(59, 130, 246, 0);
+    }
+    50% {
+        border-color: rgba(59, 130, 246, 0.6);
+        box-shadow: 0 0 25px rgba(59, 130, 246, 0.08);
+    }
+}
+
+/* ── Marquee Scroll Left ── */
+@keyframes marquee-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* ── Marquee Scroll Right ── */
+@keyframes marquee-right {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+
+.animate-marquee-left {
+    animation: marquee-left 30s linear infinite;
+}
+
+.animate-marquee-right {
+    animation: marquee-right 30s linear infinite;
+}
+
+/* ── Scroll Indicator Bounce ── */
+@keyframes scroll-bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+}
+
+.scroll-indicator {
+    animation: scroll-bounce 2s ease-in-out infinite;
+}
+
+/* ── Fade In Up (for scroll reveal) ── */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── Fade In (generic) ── */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ── Hero Content Entrance ── */
+.hero-content {
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.scroll-indicator {
+    animation: fadeIn 1s ease-out 1.5s both, scroll-bounce 2s ease-in-out 2.5s infinite;
+}
+
+/* ── Staggered reveal for hero elements ── */
+.hero-avatar {
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.hero-name {
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.hero-roles {
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+.hero-typing {
+    animation: fadeInUp 0.8s ease-out 0.7s both;
+}
+
+.hero-cta {
+    animation: fadeInUp 0.8s ease-out 0.8s both;
+}
+
+.hero-status {
+    animation: fadeInUp 0.8s ease-out 0.9s both;
+}
+
+/* ── Navbar active link underline ── */
+.nav-link.active {
+    color: #fff;
+    position: relative;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--primary);
+}

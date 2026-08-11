@@ -1,0 +1,25 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import BlogCard from '../components/BlogCard.astro';
+import { formatPostDate, readingTime, type BlogPost } from '../utils/blog';
+
+interface Props {
+  post: BlogPost;
+  related: BlogPost[];
+}
+const { post, related } = Astro.props;
+const title = `${post.data.title} | ${'Rupesh Kumar'}`;
+---
+<BaseLayout title={title} description={post.data.description} image={post.data.heroImage} imageAlt={post.data.heroAlt} type="article">
+  <article class="article-shell">
+    <header class="article-header">
+      <div class="blog-meta-line"><a href="/blog/">BLOG</a><span>/</span><span>{post.data.tags.join(' · ')}</span><span>/</span><time datetime={post.data.pubDate.toISOString()}>{formatPostDate(post.data.pubDate)}</time><span>/</span><span>{readingTime(post)}</span></div>
+      <h1>{post.data.title}</h1>
+      <p class="article-description">{post.data.description}</p>
+      <img class="article-cover" src={post.data.heroImage} alt={post.data.heroAlt} width="1200" height="675" />
+    </header>
+    <div class="prose"><slot /></div>
+    <footer class="article-footer"><a class="btn-outline" href="/blog/">← BACK TO BLOG</a></footer>
+    {related.length > 0 && <section class="related-section"><div class="subsection-header"><span class="subsection-label">// KEEP_READING</span><div class="subsection-line"></div></div><div class="related-grid">{related.map((relatedPost) => <BlogCard post={relatedPost} />)}</div></section>}
+  </article>
+</BaseLayout>

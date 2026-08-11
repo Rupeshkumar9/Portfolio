@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Projects from '../components/Projects.astro';
+import Skills from '../components/Skills.astro';
+import About from '../components/About.astro';
+import HomeBlogSection from '../components/HomeBlogSection.astro';
+import { siteConfig } from '../config';
+import { getFeaturedAndLatestPosts, getPublishedPosts } from '../utils/blog';
+
+const posts = getFeaturedAndLatestPosts(await getPublishedPosts());
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: siteConfig.name,
+  url: siteConfig.url,
+  jobTitle: siteConfig.title,
+  sameAs: Object.values(siteConfig.socials),
+};
+---
+<BaseLayout title={`${siteConfig.name} | ${siteConfig.title}`} description={siteConfig.description}>
+  <Hero />
+  <Projects />
+  {posts.length > 0 && <HomeBlogSection posts={posts} />}
+  <Skills />
+  <About />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+</BaseLayout>

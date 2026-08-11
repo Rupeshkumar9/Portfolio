@@ -1,0 +1,34 @@
+---
+import { getCollection, render } from 'astro:content';
+import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
+import { getPublishedPosts, type BlogPost } from '../../utils/blog';
+
+export async function getStaticPaths() {
+  const posts = await getPublishedPosts();
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const post = Astro.props.post as BlogPost;
+const { Content } = await render(post);
+const allPosts = await getCollection('blog');
+const related = allPosts
+  .filter((candidate) => candidate.id !== post.id && !candidate.data.draft)
+  .map((candidate) => ({ candidate, score: candidate.data.tags.filter((tag) => post.data.tags.includes(tag)).length }))
+  .sort((a, b) => b.score - a.score || b.candidate.data.pubDate.valueOf() - a.candidate.data.pubDate.valueOf())
+  .slice(0, 2)
+  .map(({ candidate }) => candidate);
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
+  author: { '@type': 'Person', name: 'Rupesh Kumar' },
+  image: new URL(post.data.heroImage, 'https://rupesh-livid.vercel.app').toString(),
+};
+---
+<BlogPostLayout post={post} related={related}>
+  <Content />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+</BlogPostLayout>

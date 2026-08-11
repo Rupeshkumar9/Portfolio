@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import BlogPagination from '../../components/BlogPagination.astro';
+import { getPublishedPosts } from '../../utils/blog';
+
+const allPosts = await getPublishedPosts();
+const pageSize = 10;
+const posts = allPosts.slice(0, pageSize);
+const totalPages = Math.max(1, Math.ceil(allPosts.length / pageSize));
+---
+<BaseLayout title="Blog | Rupesh Kumar" description="Developer notes on security, backend architecture, Astro, DevOps, and building useful software.">
+  <section class="section section-dark archive-shell">
+    <div class="container">
+      <div class="blog-hero">
+        <div class="section-status">STATUS: PUBLISHED</div>
+        <h1 class="section-title">BLOG_LOG</h1>
+        <p>Developer notes from building secure applications, backend systems, and practical deployment workflows.</p>
+        <div class="blog-meta-line"><span>{allPosts.length} published {allPosts.length === 1 ? 'article' : 'articles'}</span><span>/</span><a href="/rss.xml">RSS FEED</a></div>
+      </div>
+      <div class="blog-grid">
+        {posts.map((post) => <BlogCard post={post} featured={post.data.featured} />)}
+      </div>
+      <BlogPagination currentPage={1} totalPages={totalPages} />
+    </div>
+  </section>
+</BaseLayout>

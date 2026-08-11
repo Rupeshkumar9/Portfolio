@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ResumeViewer from '../components/ResumeViewer.astro';
+import { siteConfig } from '../config';
+---
+<BaseLayout title="Resume | Rupesh Kumar" description="View and download Rupesh Kumar's full stack developer resume.">
+  <section class="resume-shell">
+    <div class="resume-header">
+      <div><div class="section-status">DOCUMENT: RESUME.PDF</div><h1 class="section-title">RESUME</h1><p class="article-description">A concise overview of my development experience, projects, and technical toolkit.</p></div>
+      <div class="resume-actions"><a href={siteConfig.resumeUrl} target="_blank" rel="noopener noreferrer" class="btn-primary">OPEN PDF <i class="fas fa-external-link-alt"></i></a><a href={siteConfig.resumeUrl} download class="btn-outline">DOWNLOAD <i class="fas fa-download"></i></a></div>
+    </div>
+    <ResumeViewer />
+  </section>
+</BaseLayout>

@@ -107,8 +107,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Close mobile menu if open
                 const mobileMenu = document.getElementById('mobile-menu');
                 const menuBtn = document.getElementById('mobile-menu-btn');
-                if (mobileMenu) mobileMenu.classList.remove('open');
-                if (menuBtn) menuBtn.classList.remove('active');
+                if (mobileMenu) {
+                    mobileMenu.classList.remove('open');
+                    mobileMenu.hidden = true;
+                }
+                if (menuBtn) {
+                    menuBtn.classList.remove('active');
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                }
             }
         });
     });
@@ -122,8 +128,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (menuBtn && mobileMenu) {
         menuBtn.addEventListener('click', () => {
-            menuBtn.classList.toggle('active');
-            mobileMenu.classList.toggle('open');
+            const isOpen = !mobileMenu.classList.contains('open');
+            menuBtn.classList.toggle('active', isOpen);
+            mobileMenu.classList.toggle('open', isOpen);
+            mobileMenu.hidden = !isOpen;
+            menuBtn.setAttribute('aria-expanded', String(isOpen));
         });
     }
 

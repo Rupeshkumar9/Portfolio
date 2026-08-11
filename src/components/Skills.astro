@@ -1,0 +1,23 @@
+---
+const languages = ['JavaScript', 'TypeScript', 'Python', 'Java', 'C++', 'HTML5', 'CSS3'];
+const frameworks = ['React', 'Next.js', 'Node.js', 'Express', 'Django', 'Tailwind'];
+const tools = ['Docker', 'Git', 'MongoDB', 'PostgreSQL', 'MySQL', 'Firebase', 'Linux'];
+const iconSlug: Record<string, string> = { 'JavaScript': 'javascript', 'TypeScript': 'typescript', 'Python': 'python', 'Java': 'java', 'C++': 'cplusplus', 'HTML5': 'html5', 'CSS3': 'css3', React: 'react', 'Next.js': 'nextjs', 'Node.js': 'nodejs', Express: 'express', Django: 'django', Tailwind: 'tailwindcss', Docker: 'docker', Git: 'git', MongoDB: 'mongodb', PostgreSQL: 'postgresql', MySQL: 'mysql', Firebase: 'firebase', Linux: 'linux' };
+---
+<section id="skills" class="section section-dark">
+  <div class="container">
+    <div class="section-header"><h2 class="section-title">TECH_STACK</h2><span class="section-status-mono">// tools I use daily</span></div>
+    {[
+      ['LANGUAGES', languages, 'animate-marquee-left'],
+      ['FRAMEWORKS', frameworks, 'animate-marquee-right'],
+      ['TOOLS & INFRA', tools, 'animate-marquee-left'],
+    ].map(([label, items, animation]) => (
+      <div>
+        <div class="marquee-label">{label}</div>
+        <div class="marquee-wrapper"><div class="marquee-fade-left"></div><div class="marquee-fade-right"></div><div class={`marquee-track ${animation}`}>
+          {(items as string[]).map((item) => <div class="skill-chip"><img src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${iconSlug[item]}/${iconSlug[item]}-original.svg`} alt={item} class="skill-icon" loading="lazy" /> {item}</div>)}
+        </div></div>
+      </div>
+    ))}
+  </div>
+</section>

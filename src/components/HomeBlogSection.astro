@@ -1,0 +1,15 @@
+---
+import BlogCard from './BlogCard.astro';
+import type { BlogPost } from '../utils/blog';
+
+interface Props { posts: BlogPost[]; }
+const { posts } = Astro.props;
+---
+<section id="blog" class="section section-dark">
+  <div class="container">
+    <div class="section-header"><h2 class="section-title">LATEST_ARTICLES</h2><a href="/blog/" class="subsection-link">VIEW ALL <i class="fas fa-arrow-right"></i></a></div>
+    <div class="blog-grid">
+      {posts.map((post, index) => <BlogCard post={post} featured={index === 0 && post.data.featured} />)}
+    </div>
+  </div>
+</section>

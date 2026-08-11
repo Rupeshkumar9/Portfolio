@@ -1,0 +1,18 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props { project: Project; }
+const { project } = Astro.props;
+---
+<div class="hud-card project-card-sm">
+  <div class={`project-sm-icon text-${project.accent}`}><i class={`fas ${project.icon}`}></i></div>
+  <h3 class="project-sm-name">{project.name}</h3>
+  <p class="project-sm-desc">{project.description}</p>
+  <div class="project-card-tags">
+    {project.tags.map((tag) => <span class="tag-sm">{tag}</span>)}
+  </div>
+  <div class="project-card-footer">
+    <span class="project-sm-badge"><i class={`fas ${project.badgeIcon}`}></i> {project.badge}</span>
+    <a href={project.href} target="_blank" rel="noopener noreferrer" class="project-view-link">VIEW <i class="fas fa-arrow-right"></i></a>
+  </div>
+</div>

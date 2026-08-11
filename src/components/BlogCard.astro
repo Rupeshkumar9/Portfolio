@@ -1,0 +1,17 @@
+---
+import type { BlogPost } from '../utils/blog';
+import { formatPostDate, postHref, readingTime } from '../utils/blog';
+
+interface Props { post: BlogPost; featured?: boolean; }
+const { post, featured = false } = Astro.props;
+---
+<a href={postHref(post)} class={`hud-card blog-card${featured ? ' featured' : ''}`}>
+  <img class="blog-card-thumb" src={post.data.heroImage} alt={post.data.heroAlt} width="1200" height="675" loading="lazy" />
+  <div class="blog-card-body">
+    <div class="blog-card-top"><span class="blog-tag">{post.data.tags[0].toUpperCase()}</span><time class="blog-date" datetime={post.data.pubDate.toISOString()}>{formatPostDate(post.data.pubDate)}</time></div>
+    <h3 class="blog-title">{post.data.title}</h3>
+    <p class="blog-excerpt">{post.data.description}</p>
+    <div class="blog-tags">{post.data.tags.slice(0, 3).map((tag) => <span class="blog-tag-inline">#{tag}</span>)}</div>
+    <div class="blog-card-bottom"><span class="blog-source"><i class="fas fa-clock"></i> {readingTime(post)}</span><span class="blog-read">READ <i class="fas fa-arrow-right"></i></span></div>
+  </div>
+</a>

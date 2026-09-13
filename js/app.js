@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'secure, encrypted applications.',
         'real-time collaborative tools.',
         'AI-powered platforms.',
-        'full-stack web apps.',
+        'secure, scalable full-stack applications.',
         'browser extensions.',
         'REST APIs & microservices.',
     ];

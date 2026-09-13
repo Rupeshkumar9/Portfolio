@@ -1,13 +1,40 @@
 ---
-import { pageHref } from '../utils/blog';
+import { pageHref } from "../utils/blog";
 
-interface Props { currentPage: number; totalPages: number; }
+interface Props {
+  currentPage: number;
+  totalPages: number;
+}
 const { currentPage, totalPages } = Astro.props;
 ---
-{totalPages > 1 && (
-  <nav class="pagination" aria-label="Blog pages">
-    {currentPage > 1 ? <a href={pageHref(currentPage - 1)} aria-label="Previous page">← PREV</a> : <span class="disabled">← PREV</span>}
-    {Array.from({ length: totalPages }, (_, index) => index + 1).map((page) => page === currentPage ? <span class="current" aria-current="page">{page}</span> : <a href={pageHref(page)}>{page}</a>)}
-    {currentPage < totalPages ? <a href={pageHref(currentPage + 1)} aria-label="Next page">NEXT →</a> : <span class="disabled">NEXT →</span>}
-  </nav>
-)}
+
+{
+  totalPages > 1 && (
+    <nav class="pagination" aria-label="Blog pages">
+      {currentPage > 1 ? (
+        <a href={pageHref(currentPage - 1)} aria-label="Previous page">
+          ← PREV
+        </a>
+      ) : (
+        <span class="disabled">← PREV</span>
+      )}
+      {Array.from({ length: totalPages }, (_, index) => index + 1).map(
+        (page) =>
+          page === currentPage ? (
+            <span class="current" aria-current="page">
+              {page}
+            </span>
+          ) : (
+            <a href={pageHref(page)}>{page}</a>
+          ),
+      )}
+      {currentPage < totalPages ? (
+        <a href={pageHref(currentPage + 1)} aria-label="Next page">
+          NEXT →
+        </a>
+      ) : (
+        <span class="disabled">NEXT →</span>
+      )}
+    </nav>
+  )
+}

@@ -1,7 +1,8 @@
 ---
-import { projects } from '../data/projects';
-import ProjectCard from './ProjectCard.astro';
+import { vaultGuard, supportingFeaturedProjects, secondaryProjects } from "../data/projects";
+import ProjectCard from "./ProjectCard.astro";
 ---
+
 <section id="projects" class="section grid-bg">
   <div class="container">
     <div class="section-header">
@@ -9,33 +10,119 @@ import ProjectCard from './ProjectCard.astro';
       <span class="section-status">STATUS: LIVE</span>
     </div>
 
+    <!-- 1. Primary Hero Project: VaultGuard -->
     <div class="project-hero hud-card pulse-border">
       <div class="project-hero-grid">
         <div class="project-hero-info">
           <div class="project-hero-header">
-            <div class="project-icon">🔐</div>
+            <div class="project-icon">{vaultGuard.icon}</div>
             <div>
-              <h3 class="project-hero-title">VaultGuard</h3>
-              <div class="project-status"><span class="status-dot-sm"></span><span class="status-label">MULTI-PLATFORM</span></div>
+              <h3 class="project-hero-title">{vaultGuard.name}</h3>
+              <div class="project-status">
+                <span class="status-dot-sm"></span><span class="status-label"
+                  >{vaultGuard.badge}</span>
+              </div>
             </div>
           </div>
-          <h4 class="project-hero-tagline">Zero-Knowledge <span class="text-primary">Password Security</span>.</h4>
-          <p class="project-hero-desc">Offline-first password manager with client-side AES-256-GCM encryption. The server never sees your data. Built for Web, Android (native Autofill), and Browser Extensions.</p>
-          <div class="project-hero-actions"><a href="https://github.com/Rupeshkumar9/VaultGuard" target="_blank" rel="noopener noreferrer" class="btn-primary">View Project <i class="fas fa-arrow-right"></i></a></div>
+          <h4 class="project-hero-tagline">
+            Zero-Knowledge <span class="text-primary">Password Manager</span>.
+          </h4>
+          <p class="project-hero-desc">
+            {vaultGuard.description}
+          </p>
+          <div class="project-hero-actions">
+            <a
+              href={vaultGuard.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-primary"
+              >View Project <i class="fas fa-arrow-right"></i></a>
+          </div>
         </div>
         <div class="project-hero-features">
-          <div class="feature-card"><i class="fas fa-shield-halved text-primary"></i><h5>AES-256 Encryption</h5><p>Client-side zero-knowledge crypto.</p></div>
-          <div class="feature-card"><i class="fas fa-mobile-screen text-accent"></i><h5>Android Autofill</h5><p>Native Keystore integration.</p></div>
-          <div class="feature-card"><i class="fas fa-puzzle-piece text-success"></i><h5>Browser Extension</h5><p>Manifest V3, Chrome &amp; Firefox.</p></div>
-          <div class="feature-card"><i class="fas fa-database text-warning"></i><h5>Offline-First</h5><p>IndexedDB local cache + sync.</p></div>
+          {vaultGuard.features.map((feat) => (
+            <div class="feature-card">
+              <i class={`${feat.icon} ${feat.colorClass}`}></i>
+              <h5>{feat.title}</h5>
+              <p>{feat.description}</p>
+            </div>
+          ))}
         </div>
       </div>
-      <div class="project-tags"><span class="tag">REACT</span><span class="tag">NODE.JS</span><span class="tag">MONGODB</span><span class="tag">CAPACITOR</span><span class="tag">WEB CRYPTO API</span><span class="tag">MANIFEST V3</span></div>
+      <div class="project-tags">
+        {vaultGuard.tags.map((tag) => (
+          <span class="tag">{tag}</span>
+        ))}
+      </div>
     </div>
 
-    <div class="subsection-header"><span class="subsection-label">// MORE_PROJECTS</span><div class="subsection-line"></div><a href="https://github.com/Rupeshkumar9" target="_blank" rel="noopener noreferrer" class="subsection-link">VIEW ALL <i class="fab fa-github"></i></a></div>
-    <div class="projects-grid-3">
-      {projects.map((project) => <ProjectCard project={project} />)}
+    <!-- 2. Supporting Featured Projects: FinTrack & FluxBoard -->
+    <div class="projects-grid-2">
+      {supportingFeaturedProjects.map((project) => (
+        <div class="hud-card project-card">
+          <div class="project-card-header">
+            <div class="project-card-title-row">
+              <div class="project-emoji">
+                <i class={`fas ${project.icon} text-${project.accent}`}></i>
+              </div>
+              <div>
+                <h3 class="project-card-name">{project.name}</h3>
+                <div class="project-status-sm">
+                  <span class={project.accent === 'primary' ? 'dot-blue' : 'dot-purple'}></span>
+                  <span class="status-label">{project.badge}</span>
+                </div>
+              </div>
+            </div>
+            <a
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-github-link"
+              aria-label={`${project.name} GitHub Repository`}
+            >
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+          <p class="project-card-desc">{project.description}</p>
+          <div class="project-card-tags">
+            {project.tags.map((tag) => (
+              <span class="tag-sm">{tag}</span>
+            ))}
+          </div>
+          <div class="project-card-footer">
+            <span class="project-sm-badge">
+              <i class={`fas ${project.badgeIcon}`}></i> {project.badge}
+            </span>
+            <a
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-view-link"
+            >
+              VIEW PROJECT <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- 3. Secondary Project Discovery: ToxiGuard & SocialFeed Hub -->
+    <div class="subsection-header">
+      <span class="subsection-label">// MORE_PROJECTS</span>
+      <div class="subsection-line"></div>
+      <a
+        href="https://github.com/Rupeshkumar9"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="subsection-link"
+      >
+        VIEW ALL <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="projects-grid-2">
+      {secondaryProjects.slice(0, 2).map((project) => (
+        <ProjectCard project={project} />
+      ))}
     </div>
   </div>
 </section>

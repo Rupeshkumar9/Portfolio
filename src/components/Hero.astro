@@ -1,27 +1,52 @@
 ---
-import { siteConfig } from '../config';
+import { siteConfig } from "../config";
 ---
+
 <section id="home" class="hero">
   <canvas id="starfield" class="starfield-canvas" aria-hidden="true"></canvas>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-avatar">
-      <img src={siteConfig.avatar} alt={`${siteConfig.name} avatar`} class="avatar-img" width="150" height="150" />
+      <img
+        src={siteConfig.avatar}
+        alt={`${siteConfig.name} avatar`}
+        class="avatar-img"
+        width="150"
+        height="150"
+      />
     </div>
     <h1 class="hero-name">RUPESH</h1>
     <div class="hero-roles">
-      <span class="role-item"><i class="fas fa-code text-primary"></i> FULL STACK DEV</span>
+      <span class="role-item"
+        ><i class="fas fa-gear text-warning"></i> SOFTWARE ENGINEER</span
+      >
       <span class="role-separator">|</span>
-      <span class="role-item"><i class="fas fa-server text-accent"></i> BACKEND DEV</span>
+      <span class="role-item"
+        ><i class="fas fa-code text-primary"></i> FULL STACK DEV</span
+      >
       <span class="role-separator">|</span>
-      <span class="role-item"><i class="fas fa-cloud text-success"></i> DEVOPS</span>
+      <span class="role-item"
+        ><i class="fas fa-server text-accent"></i> BACKEND DEV</span
+      >
     </div>
-    <div class="hero-typing">I build <span class="typewriter" id="typewriter"></span><span class="cursor">|</span></div>
+    <div class="hero-typing">
+      I build <span class="typewriter" id="typewriter"></span><span
+        class="cursor">|</span>
+    </div>
     <div class="hero-cta">
       <a href="#projects" class="btn-primary">VIEW PROJECTS</a>
-      <a href={siteConfig.socials.github} target="_blank" rel="noopener noreferrer" class="btn-outline"><i class="fab fa-github"></i> GITHUB</a>
+      <a
+        href={siteConfig.socials.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-outline"><i class="fab fa-github"></i> GITHUB</a
+      >
     </div>
-    <div class="hero-status"><span class="status-dot"></span> Open to opportunities &amp; collaborations</div>
+    <div class="hero-status">
+      <span class="status-dot"></span> Open to opportunities &amp; collaborations
+    </div>
   </div>
-  <div class="scroll-indicator"><span class="scroll-text">SCROLL</span><div class="scroll-line"></div></div>
+  <div class="scroll-indicator">
+    <span class="scroll-text">SCROLL</span><div class="scroll-line"></div>
+  </div>
 </section>

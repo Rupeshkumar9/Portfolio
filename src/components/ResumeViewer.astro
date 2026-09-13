@@ -1,8 +1,18 @@
 ---
-import { siteConfig } from '../config';
+import { siteConfig } from "../config";
 ---
+
 <div class="resume-frame-wrap">
-  <object class="resume-frame" data={siteConfig.resumeUrl} type="application/pdf" aria-label="Rupesh Kumar resume PDF">
-    <p class="resume-fallback">Your browser cannot display the PDF inline. <a href={siteConfig.resumeUrl}>Open or download the resume</a>.</p>
+  <object
+    class="resume-frame"
+    data={siteConfig.resumeUrl}
+    type="application/pdf"
+    aria-label="Rupesh Kumar resume PDF"
+  >
+    <p class="resume-fallback">
+      Your browser cannot display the PDF inline. <a href={siteConfig.resumeUrl}
+        >Open or download the resume</a
+      >.
+    </p>
   </object>
 </div>

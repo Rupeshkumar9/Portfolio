@@ -9,6 +9,8 @@ Live site: [rupesh-livid.vercel.app](https://rupesh-livid.vercel.app/)
 ## Features
 
 - Astro static site generation with the original space/HUD visual system.
+- Flagship projects showcase: **VaultGuard** (Zero-Knowledge Password Manager), **FinTrack** (Personal Finance Tracker), and **FluxBoard** (Real-Time Collaboration Platform).
+- 4-row animated marquee tech stack (Languages, Frameworks & Runtimes, Databases & Backend, Tools & Infra).
 - Markdown blog posts loaded through a typed Astro content collection.
 - Static article routes under `/blog/`, with 10-post pagination at `/blog/page/<n>/`.
 - Homepage latest-article cards, article metadata, RSS, sitemap, robots.txt, and JSON-LD.

@@ -1,23 +1,106 @@
 ---
-const languages = ['JavaScript', 'TypeScript', 'Python', 'Java', 'C++', 'HTML5', 'CSS3'];
-const frameworks = ['React', 'Next.js', 'Node.js', 'Express', 'Django', 'Tailwind'];
-const tools = ['Docker', 'Git', 'MongoDB', 'PostgreSQL', 'MySQL', 'Firebase', 'Linux'];
-const iconSlug: Record<string, string> = { 'JavaScript': 'javascript', 'TypeScript': 'typescript', 'Python': 'python', 'Java': 'java', 'C++': 'cplusplus', 'HTML5': 'html5', 'CSS3': 'css3', React: 'react', 'Next.js': 'nextjs', 'Node.js': 'nodejs', Express: 'express', Django: 'django', Tailwind: 'tailwindcss', Docker: 'docker', Git: 'git', MongoDB: 'mongodb', PostgreSQL: 'postgresql', MySQL: 'mysql', Firebase: 'firebase', Linux: 'linux' };
+const languages = [
+  "JavaScript",
+  "TypeScript",
+  "Python",
+  "Java",
+  "SQL",
+  "HTML5",
+  "CSS3",
+];
+
+const frameworks = [
+  "React",
+  "Next.js",
+  "Node.js",
+  "Express",
+  "Vite",
+  "Tailwind CSS",
+];
+
+const databases = [
+  "MongoDB",
+  "PostgreSQL",
+  "Prisma",
+  "Mongoose",
+];
+
+const tools = [
+  "Git",
+  "GitHub",
+  "Docker",
+  "Linux",
+  "MongoDB Atlas",
+  "Supabase",
+  "Vercel",
+  "Render",
+];
+
+const skillIcons: Record<string, string> = {
+  JavaScript: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
+  TypeScript: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+  Python: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
+  Java: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
+  SQL: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg",
+  HTML5: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
+  CSS3: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
+  React: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+  "Next.js": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
+  "Node.js": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
+  Express: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
+  Vite: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg",
+  "Tailwind CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+  MongoDB: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg",
+  PostgreSQL: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
+  Prisma: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg",
+  Mongoose: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongoose/mongoose-original.svg",
+  Git: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
+  GitHub: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
+  Docker: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
+  Linux: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg",
+  "MongoDB Atlas": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg",
+  Supabase: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg",
+  Vercel: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg",
+  Render: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/render.svg",
+};
+
+const marqueeRows = [
+  { label: "LANGUAGES", items: languages, animation: "animate-marquee-left" },
+  { label: "FRAMEWORKS & RUNTIMES", items: frameworks, animation: "animate-marquee-right" },
+  { label: "DATABASES & BACKEND", items: databases, animation: "animate-marquee-left" },
+  { label: "TOOLS & INFRA", items: tools, animation: "animate-marquee-right" },
+];
 ---
+
 <section id="skills" class="section section-dark">
   <div class="container">
-    <div class="section-header"><h2 class="section-title">TECH_STACK</h2><span class="section-status-mono">// tools I use daily</span></div>
-    {[
-      ['LANGUAGES', languages, 'animate-marquee-left'],
-      ['FRAMEWORKS', frameworks, 'animate-marquee-right'],
-      ['TOOLS & INFRA', tools, 'animate-marquee-left'],
-    ].map(([label, items, animation]) => (
-      <div>
-        <div class="marquee-label">{label}</div>
-        <div class="marquee-wrapper"><div class="marquee-fade-left"></div><div class="marquee-fade-right"></div><div class={`marquee-track ${animation}`}>
-          {(items as string[]).map((item) => <div class="skill-chip"><img src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${iconSlug[item]}/${iconSlug[item]}-original.svg`} alt={item} class="skill-icon" loading="lazy" /> {item}</div>)}
-        </div></div>
-      </div>
-    ))}
+    <div class="section-header">
+      <h2 class="section-title">TECH_STACK</h2><span class="section-status-mono"
+        >// tools I use daily</span>
+    </div>
+    {
+      marqueeRows.map(({ label, items, animation }) => (
+        <div>
+          <div class="marquee-label">{label}</div>
+          <div class="marquee-wrapper">
+            <div class="marquee-fade-left" />
+            <div class="marquee-fade-right" />
+            <div class={`marquee-track ${animation}`}>
+              {items.map((item) => (
+                <div class="skill-chip">
+                  <img
+                    src={skillIcons[item]}
+                    alt={item}
+                    class="skill-icon"
+                    loading="lazy"
+                  />{" "}
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))
+    }
   </div>
 </section>

@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: 'Rupesh Kumar',
   shortName: 'RUPESH',
-  title: 'Full Stack Developer & DevOps Engineer',
-  description: 'Full Stack Developer building secure, real-time, and AI-powered applications with modern web technologies.',
+  title: 'Full Stack Developer & Backend Engineer',
+  description: 'Full Stack Developer building secure, real-time, and data-driven web applications with modern JavaScript and Node.js technologies.',
   url: 'https://rupesh-livid.vercel.app',
   email: 'Rupeshkumar45670234@gmail.com',
   avatar: '/assets/images/avatar.png',
